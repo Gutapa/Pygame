@@ -5,10 +5,13 @@ pygame.display.set_caption("First Game")
 
 x=50
 y=50
+cx=900
+cy=0
 width=40
 height=60
 radius=20
 vel=5
+velc=5
 
 run=True
 while run:
@@ -45,10 +48,30 @@ while run:
 	if y<-51:
 		y=1024	 
 
+	cy+=velc
+
+	if cy>1025:
+		velc=-5
+	if cy<-10:
+		velc=5
+
+
+	if y==cy+10 and velc>0 and x==cx:
+		velc=-5
+
+	if y+55==cy-15 and velc<0 and x==cx:
+	#  :
+		print("CY=:",cy)
+		print("Y=:",y)
+		velc=5
+
+	#if cx>1855:
+		
+
 	win.fill((0,0,0))
 
 	pygame.draw.rect(win,(255,0,0),(x,y,width,height))
-	#pygame.draw.circle(win,(0,255,0),(x,y),radius)
+	pygame.draw.circle(win,(0,255,0),(cx,cy),radius)
 	pygame.display.update()
 
 pygame.quit()
